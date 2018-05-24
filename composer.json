@@ -1,0 +1,16 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=7.0",
+        "laravel/framework": "5.5.*",
+    },
+    "autoload": {
+        "psr-4": {
+            "fidelize\\CheckStatusServices\\": "src/"
+        }
+    },
+}
