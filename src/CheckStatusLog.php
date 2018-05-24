@@ -1,9 +1,17 @@
 <?php
 
 namespace fidelize\CheckStatusServices;
+use Illuminate\Support\Facades\Log;
 
-
-abstract class CheckStatusLog
+class CheckStatusLog
 {
-
+    public function check()
+    {
+        try {
+            Log::info('Web log OK!');
+            return true;
+        } catch (\Exception $exception) {
+            return false;
+        }
+    }
 }
