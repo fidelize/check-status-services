@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "fidelize/checkStatusServices",
+    "description": "Component to check the status of services provided by laravel",
+    "keywords": ["framework", "laravel","fidelize","services"],
     "license": "MIT",
     "type": "project",
     "require": {
