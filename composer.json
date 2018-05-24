@@ -1,5 +1,5 @@
 {
-    "name": "fidelize/checkStatusServices",
+    "name": "fidelize/check-status-services",
     "description": "Component to check the status of services provided by laravel",
     "keywords": ["framework", "laravel","fidelize","services"],
     "license": "MIT",
