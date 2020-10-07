@@ -30,4 +30,30 @@ class CheckStatusDatabaseTest extends TestCase
             ->andReturn($mock);
         $this->assertTrue((new CheckStatusDatabase())->check());
     }
+
+    public function testCheckShouldReturnFalseWhenConnectionIsMongodbAndDatabaseIsNotOk()
+    {
+        $mongoClient = Mockery::mock(\MongoDB\Client::class);
+        $mongoClient->shouldReceive('listDatabases')->andThrow(new \Exception);
+        $mock = Mockery::mock(\Jenssegers\Mongodb\Connection::class);
+        $mock->shouldReceive('getMongoClient')->andReturn($mongoClient);
+
+        DB::shouldReceive('connection')
+            ->once()
+            ->andReturn($mock);
+        $this->assertFalse((new CheckStatusDatabase())->check());
+    }
+
+    public function testCheckShouldReturnTrueWhenConnectionIsMongodbAndDatabaseIsOk()
+    {
+        $mongoClient = Mockery::mock(\MongoDB\Client::class);
+        $mongoClient->shouldReceive('listDatabases')->andReturn(true);
+        $mock = Mockery::mock(\Jenssegers\Mongodb\Connection::class);
+        $mock->shouldReceive('getMongoClient')->andReturn($mongoClient);
+
+        DB::shouldReceive('connection')
+            ->once()
+            ->andReturn($mock);
+        $this->assertTrue((new CheckStatusDatabase())->check());
+    }
 }
